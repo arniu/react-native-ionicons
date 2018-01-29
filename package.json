@@ -1,0 +1,57 @@
+{
+  "name": "react-native-ionicons",
+  "version": "0.0.1",
+  "description": "Ionic icons for React Native",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "prettier --write '**/*.{js,ts,md}'; standard --fix"
+  },
+  "lint-staged": {
+    "*.{ts,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --write",
+      "standard --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arniu/react-native-ionicons.git"
+  },
+  "keywords": [
+    "react-native",
+    "ionicons",
+    "ionic",
+    "icons"
+  ],
+  "author": "Arniu Tseng",
+  "license": "MIT",
+  "homepage": "https://github.com/arniu/react-native-ionicons#readme",
+  "bugs": {
+    "url": "https://github.com/arniu/react-native-ionicons/issues"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "standard": "^10.0.3"
+  },
+  "rnpm": {
+    "assets": [
+      "fonts"
+    ]
+  }
+}
