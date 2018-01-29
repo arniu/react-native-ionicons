@@ -6,19 +6,19 @@
 
 ## Usage
 
-1. Install
+* Install
 
 ```bash
 npm i react-native-ionicons
 ```
 
-2. Link with react-native
+* Link with react-native
 
 ```bash
 react-native link react-native-ionicons
 ```
 
-3. Use in code
+* Enjoy it
 
 ```jsx harmony
 import Icon from 'react-native-ionicons'
