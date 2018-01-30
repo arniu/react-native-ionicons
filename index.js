@@ -1,28 +1,6 @@
 import * as React from 'react'
 import { Platform, Text } from 'react-native'
-import glyphMap from './glyphmap.json'
-
-function getGlyph (iconName, fallback, active) {
-  return ['', iconName, fallback].reduce((prev, name) => {
-    if (prev) return prev
-
-    if (name in glyphMap) {
-      return glyphMap[name]
-    }
-
-    const xs = [name]
-    if (Platform.OS === 'ios') {
-      xs.unshift('ios')
-      if (!active) {
-        xs.push('outline')
-      }
-    } else {
-      xs.unshift('md')
-    }
-
-    return glyphMap[xs.join('-')]
-  })
-}
+import getGlyph from './glyph'
 
 export default class Icon extends React.PureComponent {
   constructor (props) {
@@ -42,10 +20,11 @@ export default class Icon extends React.PureComponent {
   render () {
     const { name, android, ios, active, size, color, ...props } = this.props
 
-    let glyph = getGlyph(Platform.select({ android, ios }), name, active)
-    if (typeof glyph === 'number') {
-      glyph = String.fromCharCode(glyph)
-    }
+    const glyph = getGlyph(
+      [Platform.select({ android, ios }), name],
+      Platform.OS,
+      active
+    )
 
     const fontStyle = {
       fontFamily: 'Ionicons',

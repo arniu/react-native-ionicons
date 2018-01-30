@@ -32,6 +32,23 @@ const IconBar = () => (
 )
 ```
 
+## PropTypes
+
+|    Name | Type       | Default | Description                          |
+| ------: | ---------- | ------- | ------------------------------------ |
+|    name | `IconName` | -       | Name of the icon                     |
+| android | `IconName` | -       | Name of the icon for Android devices |
+|     ios | `IconName` | -       | Name of the icon for iOS devices     |
+|  active | `?boolean` | false   | Render filled icons, **iOS only**    |
+|   color | `?string`  | -       | Color of the icon                    |
+|    size | `?number`  | 30      | Size of the icon, namely `fontSize`  |
+|     ... | -          | -       | Other props of `Text` component      |
+
+> `IconName` can be **short form** or **long form**.
+> The short form is the main part of the icon name, such as the `add` to `ios-add-outline`.
+>
+> Icons can be found at [here](https://ionicframework.com/docs/ionicons/).
+
 ## License
 
 MIT
