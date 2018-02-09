@@ -6,6 +6,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "precommit": "lint-staged",
+    "prepublish": "node generate-icon",
     "lint": "prettier --write '**/*.{js,ts,md}'; standard --fix"
   },
   "lint-staged": {
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "husky": "^0.14.3",
+    "ionicons": "^3.0.0",
     "lint-staged": "^6.1.0",
     "prettier": "^1.10.2",
     "standard": "^10.0.3"

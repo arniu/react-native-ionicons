@@ -1,3 +1,4 @@
 .editorconfig
 .gitignore
 .npmignore
+generate-icon.js

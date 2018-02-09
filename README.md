@@ -26,7 +26,6 @@ import Icon from 'react-native-ionicons'
 const IconBar = () => (
   <View>
     <Icon name="add" />
-    <Icon name="add" ios="ios-add-circle" />
     <Icon ios="ios-add" android="md-add" />
   </View>
 )
