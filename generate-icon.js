@@ -29,14 +29,6 @@ function parseGlyphMap (text) {
   return glyph
 }
 
-/**
- * @param {string} file
- * @return {Promise.<Buffer>}
- */
-function readFile (file) {
-  return Promise.resolve(fs.readFileSync(file))
-}
-
 function resolvePath (file) {
   return `${__dirname}/node_modules/ionicons/dist/${file}`
 }
@@ -49,16 +41,15 @@ function resolvePath (file) {
       steps: [String, parseGlyphMap, stringify]
     },
     {
-      file: 'fonts/ionicons.ttf',
+      file: 'fonts/Ionicons.ttf',
       source: 'fonts/ionicons.ttf',
       steps: []
     }
-  ].map(({ file, source, steps }) => {
-    const init = readFile(resolvePath(source))
-    return steps.reduce((prev, next) => prev.then(next), init).then(data => {
-      fs.writeFileSync(path.resolve(__dirname, file), data)
-    })
-  })
+  ].map(({ file, source, steps }) =>
+    [resolvePath, fs.readFileSync, ...steps]
+      .reduce((prev, next) => prev.then(next), Promise.resolve(source))
+      .then(data => fs.writeFileSync(path.resolve(__dirname, file), data))
+  )
 
   Promise.all(recipes)
     .then(() => debug('done!'))

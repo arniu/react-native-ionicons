@@ -26,7 +26,7 @@ export default class Icon extends React.PureComponent {
       active
     )
 
-    const fontStyle = {
+    const textStyle = {
       fontFamily: 'Ionicons',
       fontWeight: 'normal',
       fontStyle: 'normal',
@@ -34,7 +34,7 @@ export default class Icon extends React.PureComponent {
       color
     }
 
-    props.style = [fontStyle, props.style]
+    props.style = [textStyle, props.style]
     props.ref = this.setRef
 
     return (
