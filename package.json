@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arniu/react-native-ionicons.git"
+    "url": "git+https://github.com/fanqfanh/react-native-ionicons.git"
   },
   "keywords": [
     "react-native",
@@ -36,9 +36,9 @@
   ],
   "author": "Arniu Tseng",
   "license": "MIT",
-  "homepage": "https://github.com/arniu/react-native-ionicons#readme",
+  "homepage": "https://github.com/fanqfanh/react-native-ionicons#readme",
   "bugs": {
-    "url": "https://github.com/arniu/react-native-ionicons/issues"
+    "url": "https://github.com/fanqfanh/react-native-ionicons/issues"
   },
   "peerDependencies": {
     "react": "*",
