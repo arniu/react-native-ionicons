@@ -43,10 +43,10 @@ const IconBar = () => (
 |    size | `?number`  | 30      | Size of the icon, namely `fontSize`  |
 |     ... | -          | -       | Other props of `Text` component      |
 
-> `IconName` can be **short form** or **long form**.
+> `IconName` can be in **short form** or **long form**.
 > The short form is the main part of the icon name, such as the `add` to `ios-add-outline`.
 >
-> Icons can be found at [here](https://ionicframework.com/docs/ionicons/).
+> Icons can be found at [here](https://ionicons.com/).
 
 ## Versioning
 
