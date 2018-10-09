@@ -48,6 +48,10 @@ const IconBar = () => (
 >
 > Icons can be found at [here](https://ionicframework.com/docs/ionicons/).
 
+## Versioning
+
+We **DOT NOT** use [SemVer](http://semver.org/) for versioning. Tho you can think about SemVer when reading our version, except our major number follow the one of Ionicons.
+
 ## License
 
-MIT
+[MIT](./LICENSE)
