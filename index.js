@@ -1,53 +1,73 @@
 import * as React from 'react'
-import { Platform, Text } from 'react-native'
-import getGlyph from './glyph'
+import { StyleSheet, Text, Platform } from 'react-native'
+import tryGlyph from './glyph'
 
-export default class Icon extends React.PureComponent {
+/**
+ * (string, string, string) => string
+ */
+const getGlyph = Platform.select({
+  ios: (_android, ios, name) => tryGlyph([ios, name], 'ios'),
+  default: (android, _ios, name) => tryGlyph([android, name], 'md')
+})
+
+class Icon extends React.PureComponent {
   constructor (props) {
     super(props)
 
-    this.setRef = function (node) {
-      this._ref = node
-    }.bind(this)
+    this._setRef = ref => {
+      this._text = ref
+    }
   }
 
   setNativeProps (props) {
-    if (this._ref) {
-      this._ref.setNativeProps(props)
+    if (this._text) {
+      this._text.setNativeProps(props)
     }
   }
 
   render () {
-    const { name, android, ios, active, size, color, ...props } = this.props
+    const {
+      name,
+      android,
+      ios,
+      size,
+      color,
+      style,
+      children,
+      ...textProps
+    } = this.props
 
-    const glyph = getGlyph(
-      [Platform.select({ android, ios }), name],
-      Platform.OS,
-      active
-    )
-
-    const textStyle = {
-      fontFamily: 'Ionicons',
-      fontWeight: 'normal',
-      fontStyle: 'normal',
+    const fontStyle = {
       fontSize: size,
       color
     }
 
-    props.style = [textStyle, props.style]
-    props.ref = this.setRef
+    const glyph = getGlyph(android, ios, name)
 
     return (
-      <Text {...props}>
+      <Text
+        {...textProps}
+        style={[styles.default, fontStyle, style]}
+        ref={this._setRef}
+      >
         {glyph}
-        {props.children}
+        {children}
       </Text>
     )
   }
 }
 
+export default Icon
+
+const styles = StyleSheet.create({
+  default: {
+    fontFamily: 'Ionicons',
+    fontWeight: 'normal',
+    fontStyle: 'normal'
+  }
+})
+
 Icon.defaultProps = {
-  active: false,
   allowFontScaling: false,
   size: 30
 }

@@ -38,7 +38,6 @@ const IconBar = () => (
 |    name | `IconName` | -       | Name of the icon                     |
 | android | `IconName` | -       | Name of the icon for Android devices |
 |     ios | `IconName` | -       | Name of the icon for iOS devices     |
-|  active | `?boolean` | false   | Render filled icons, **iOS only**    |
 |   color | `?string`  | -       | Color of the icon                    |
 |    size | `?number`  | 30      | Size of the icon, namely `fontSize`  |
 |     ... | -          | -       | Other props of `Text` component      |
