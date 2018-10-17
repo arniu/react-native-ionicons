@@ -17,12 +17,14 @@ function stringify (value) {
  * @param {string} text
  * @return {Object.<string, number>}
  */
-function parseGlyphMap (text) {
+function parseGlyphs (text) {
   const glyph = {}
   const regex = /\.ion-([\w-]+):before\s*{\s*content:\s*"\\?(\w+)";\s*}/g
   for (let xs = []; xs !== null; xs = regex.exec(text)) {
     if (xs.length === 3) {
       glyph[xs[1]] = parseInt(xs[2], 16)
+    } else {
+      throw new Error(`Fail to parse ${xs[0]}`)
     }
   }
 
@@ -38,7 +40,7 @@ function resolvePath (file) {
     {
       file: 'glyph/map.json',
       source: 'scss/ionicons-icons.scss',
-      steps: [String, parseGlyphMap, stringify]
+      steps: [String, parseGlyphs, stringify]
     },
     {
       file: 'fonts/Ionicons.ttf',

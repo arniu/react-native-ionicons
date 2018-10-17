@@ -3,7 +3,15 @@ import { StyleSheet, Text, Platform } from 'react-native'
 import tryGlyph from './glyph'
 
 /**
- * (string, string, string) => string
+ * @typedef {(string|undefined)} IconName
+ */
+
+/**
+ * @function
+ * @param {IconName} android
+ * @param {IconName} ios
+ * @param {IconName} name
+ * @return {string}
  */
 const getGlyph = Platform.select({
   ios: (_android, ios, name) => tryGlyph([ios, name], 'ios'),
@@ -42,19 +50,22 @@ class Icon extends React.PureComponent {
       color
     }
 
-    const glyph = getGlyph(android, ios, name)
-
     return (
       <Text
         {...textProps}
         style={[styles.default, fontStyle, style]}
         ref={this._setRef}
       >
-        {glyph}
+        {getGlyph(android, ios, name)}
         {children}
       </Text>
     )
   }
+}
+
+Icon.defaultProps = {
+  allowFontScaling: false,
+  size: 30
 }
 
 export default Icon
@@ -66,8 +77,3 @@ const styles = StyleSheet.create({
     fontStyle: 'normal'
   }
 })
-
-Icon.defaultProps = {
-  allowFontScaling: false,
-  size: 30
-}

@@ -43,7 +43,7 @@ const IconBar = () => (
 |     ... | -          | -       | Other props of `Text` component      |
 
 > `IconName` can be in **short form** or **long form**.
-> The short form is the main part of the icon name, such as the `add` to `ios-add-outline`.
+> The short form is the main part of the icon name, such as the `add` to `ios-add`.
 >
 > Icons can be found at [here](https://ionicons.com/).
 
