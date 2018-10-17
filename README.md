@@ -54,13 +54,13 @@ We **DOT NOT** use [SemVer](http://semver.org/) for versioning. Tho you can thin
 ## [Share the Love](https://mozilla.github.io/for-firefox/)
 
 <a title="I Use Firefox"
-   rel="nofollow"
-   href="https://www.mozilla.org/firefox/this-browser-comes-highly-recommended/?utm_source=devs-for.firefox.com&utm_medium=referral&utm_campaign=devs-for-firefox&utm_content=I-Use-Firefox">
+    rel="nofollow"
+    href="https://www.mozilla.org/firefox/this-browser-comes-highly-recommended/?utm_source=devs-for.firefox.com&utm_medium=referral&utm_campaign=devs-for-firefox&utm_content=I-Use-Firefox">
 <img style="border:0 none;"
-       alt="I Use Firefox"
-       srcset="//code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox.png,
-               //code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox-2x.png 2x"
-       src="//code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox.png">
+    alt="I Use Firefox"
+    srcset="https://code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox.png,
+            https://code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox-2x.png 2x"
+    src="https://code.cdn.mozilla.net/for-firefox/badges/assets/I-Use-Firefox.png">
 </a>
 
 ## License
