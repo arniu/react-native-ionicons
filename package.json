@@ -24,6 +24,11 @@
     "semi": false,
     "singleQuote": true
   },
+  "standard": {
+    "ignore": [
+      "*.flow.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fanqfanh/react-native-ionicons.git"
