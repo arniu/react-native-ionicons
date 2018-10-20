@@ -19,13 +19,9 @@ function stringify (value) {
  */
 function parseGlyphs (text) {
   const glyph = {}
-  const regex = /\.ion-([\w-]+):before\s*{\s*content:\s*"\\?(\w+)";\s*}/g
-  for (let xs = []; xs !== null; xs = regex.exec(text)) {
-    if (xs.length === 3) {
-      glyph[xs[1]] = parseInt(xs[2], 16)
-    } else {
-      throw new Error(`Fail to parse ${xs[0]}`)
-    }
+  const regex = /ion-([^:]+):before.+content:\s*"\\(\w+)"/gm
+  for (let result; (result = regex.exec(text));) {
+    glyph[result[1]] = parseInt(result[2], 16)
   }
 
   return glyph
