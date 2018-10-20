@@ -1,9 +1,15 @@
-export interface Icon {
-  name?: string
-  android?: string
-  ios?: string
-  size?: number
-  color?: string
-  children?: any
-  style?: any
+import * as React from 'react'
+
+declare module 'react-native-ionicons' {
+  interface IconProps {
+    name?: string
+    android?: string
+    ios?: string
+    color?: string
+    size?: number
+  }
+
+  class Icon extends React.PureComponent<IconProps> {}
+
+  export default Icon
 }
