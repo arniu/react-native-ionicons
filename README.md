@@ -30,6 +30,14 @@ const IconBar = () => (
   </View>
 )
 ```
+- Windows manual install
+* Open the windows project file (.sln) in Visual Studio
+* Right click the **Assets** folder and select **Add Existing**
+* Browse to the `node_modules\react-native-ionicons\fonts` folder and select the font file
+* Click the **Add** drop-down and select **Add as Link**
+* In Visual Studio, select the font file in the **Assets** folder
+* Set the **Copy To Output Directory** property to **Copy if newer**
+* Save changes and recompile the project
 
 ## PropTypes
 
