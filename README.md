@@ -4,12 +4,14 @@
 [![code style: standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
+Bring [Ionicons - Beautifully crafted open source icons](https://ionicons.com/) to your react-native apps.
+
 ## Usage
 
 - Install
 
 ```bash
-npm i react-native-ionicons
+npm install react-native-ionicons
 ```
 
 - Link with react-native
@@ -18,7 +20,7 @@ npm i react-native-ionicons
 react-native link react-native-ionicons
 ```
 
-- Enjoy it
+- Use it
 
 ```jsx harmony
 import Icon from 'react-native-ionicons'
@@ -26,39 +28,40 @@ import Icon from 'react-native-ionicons'
 const IconBar = () => (
   <View>
     <Icon name="add" />
+    <!-- This is same to the following: -->
     <Icon ios="ios-add" android="md-add" />
   </View>
 )
 ```
-## Windows manual install
 
-* Open the windows project file (.sln) in Visual Studio
-* Right click the **Assets** folder and select **Add Existing**
-* Browse to the `node_modules\react-native-ionicons\fonts` folder and select the font file
-* Click the **Add** drop-down and select **Add as Link**
-* In Visual Studio, select the font file in the **Assets** folder
-* Set the **Copy To Output Directory** property to **Copy if newer**
-* Save changes and recompile the project
+## Install instructions for Windows projects
 
-## PropTypes
+- Open the windows project file (.sln) in Visual Studio
+- Right click the **Assets** folder and select **Add Existing**
+- Browse to the `node_modules\react-native-ionicons\fonts` folder and select the font file
+- Click the **Add** drop-down and select **Add as Link**
+- In Visual Studio, select the font file in the **Assets** folder
+- Set the **Copy To Output Directory** property to **Copy if newer**
+- Save changes and recompile the project
 
-|    Name | Type       | Default | Description                          |
-| ------: | ---------- | ------- | ------------------------------------ |
-|    name | `IconName` | -       | Name of the icon                     |
-| android | `IconName` | -       | Name of the icon for Android devices |
-|     ios | `IconName` | -       | Name of the icon for iOS devices     |
-|   color | `?string`  | -       | Color of the icon                    |
-|    size | `?number`  | 30      | Size of the icon, namely `fontSize`  |
-|     ... | -          | -       | Other props of `Text` component      |
+## Prop Types
 
-> `IconName` can be in **short form** or **long form**.
-> The short form is the main part of the icon name, such as the `add` to `ios-add`.
+|    Name | Type       | Default | Description                     |
+| ------: | ---------- | ------- | ------------------------------- |
+|    name | `IconName` | -       | Icon name used on all platforms |
+| android | `IconName` | -       | Icon name for Android devices   |
+|     ios | `IconName` | -       | Icon name for iOS devices       |
+|   color | `?string`  | -       | Icon color                      |
+|    size | `?number`  | 30      | Icon size, namely `fontSize`    |
+
+> `IconName` can be of short name or qualified name, which is the short one
+> preffixed with `md-` or `ios-`.
 >
-> Icons can be found at [here](https://ionicons.com/).
+> The short `IconName` can be found [here](https://ionicons.com/cheatsheet.html).
 
 ## Versioning
 
-We **DOT NOT** use [SemVer](http://semver.org/) for versioning. Tho you can think about SemVer when reading our version, except our major number follow the one of Ionicons.
+We **DOT NOT** use [SemVer](http://semver.org/) for versioning. Though you can think about SemVer when reading our version, except our major number follow the one of Ionicons.
 
 ## [Share the Love](https://mozilla.github.io/for-firefox/)
 
