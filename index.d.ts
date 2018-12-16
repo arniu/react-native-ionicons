@@ -1,6 +1,6 @@
-import * as React from 'react'
-
 declare module 'react-native-ionicons' {
+  import * as React from 'react'
+
   interface IconProps {
     name?: string
     android?: string
