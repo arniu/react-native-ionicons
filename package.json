@@ -1,6 +1,6 @@
 {
   "name": "react-native-ionicons",
-  "version": "4.4.6",
+  "version": "4.4.7",
   "description": "Ionic icons for React Native",
   "main": "index.js",
   "typings": "index.d.ts",
