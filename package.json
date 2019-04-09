@@ -5,9 +5,13 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "precommit": "lint-staged",
     "prepublish": "node generate-icon",
     "lint": "prettier --write '**/*.{js,ts,md}'; standard --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{ts,md}": [
@@ -50,10 +54,10 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
+    "husky": "^1.3.1",
     "ionicons": "^4.5.5",
-    "lint-staged": "^8.1.0",
-    "prettier": "^1.16.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
     "standard": "^12.0.1"
   },
   "rnpm": {
