@@ -1,14 +1,13 @@
 declare module 'react-native-ionicons' {
-  import * as React from 'react'
-  import { StyleProp } from 'react-native'
+  import React from 'react'
+  import { TextProps } from 'react-native'
 
-  interface IconProps {
+  export type IconProps = TextProps & {
     name?: string
     android?: string
     ios?: string
     color?: string
     size?: number
-    style?: StyleProp<any>
   }
 
   class Icon extends React.PureComponent<IconProps> {}
