@@ -61,8 +61,6 @@
     "standard": "^13.0.2"
   },
   "rnpm": {
-    "assets": [
-      "fonts"
-    ]
+    "assets": ["fonts"]
   }
 }

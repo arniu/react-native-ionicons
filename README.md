@@ -14,7 +14,10 @@ Bring [Ionicons - Beautifully crafted open source icons](https://ionicons.com/) 
 npm install react-native-ionicons
 ```
 
-- Link with react-native
+- Link with `react-native`
+
+> ⚠️ You needn't do this when you're using React Native 0.60+.
+> Since v0.60, `react-native link` was replaced by the [autolinking mechanism](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md).
 
 ```bash
 react-native link react-native-ionicons
