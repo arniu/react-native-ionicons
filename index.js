@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, Platform } from 'react-native'
-import tryGlyph from './glyph'
+import { tryGlyph } from './glyph'
 
 /**
  * @typedef {(string|undefined)} IconName
@@ -14,8 +14,8 @@ import tryGlyph from './glyph'
  * @return {string}
  */
 const getGlyph = Platform.select({
-  ios: (_android, ios, name) => tryGlyph([ios, name], 'ios'),
-  default: (android, _ios, name) => tryGlyph([android, name], 'md')
+  ios: (_android, ios, name) => tryGlyph([ios, name], x => `ios-${x}`),
+  default: (android, _ios, name) => tryGlyph([android, name], x => `md-${x}`)
 })
 
 class Icon extends React.PureComponent {

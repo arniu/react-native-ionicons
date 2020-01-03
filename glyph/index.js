@@ -1,16 +1,22 @@
 import glyphs from './map.json'
 
+export const UNKNOWN_ICON = ''
+
 /**
- * Get glyph
+ * Try glyph
  *
  * @param {Array.<?string>} iconNames
- * @param {string} prefix
+ * @param {function(string): string} mapper
  * @return {string}
  */
-export default function (iconNames, prefix) {
+export function tryGlyph (iconNames, mapper) {
   const code = iconNames.reduce((prev, name) => {
-    return prev || glyphs[name in glyphs ? name : `${prefix}-${name}`]
+    return prev || glyphs[name in glyphs ? name : mapper(name)]
   }, undefined)
 
-  return code ? String.fromCharCode(code) : ''
+  return code ? String.fromCharCode(code) : UNKNOWN_ICON
 }
+
+/**
+ * @typedef
+ */

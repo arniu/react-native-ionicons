@@ -3,8 +3,6 @@
 const fs = require('fs')
 const path = require('path')
 
-const debug = console.log
-
 /**
  * @param {any} value
  * @return {string}
@@ -31,25 +29,36 @@ function resolvePath (file) {
   return `${__dirname}/node_modules/ionicons/dist/${file}`
 }
 
-;(function () {
-  const recipes = [
+const FILES = (exports.FILES = {
+  GLYPH_MAP: 'glyph/map.json',
+  FONT_FILE: 'fonts/Ionicons.ttf'
+})
+
+function generate () {
+  const workflows = [
     {
-      file: 'glyph/map.json',
-      source: 'scss/ionicons-icons.scss',
+      file: FILES.GLYPH_MAP,
+      from: 'scss/ionicons-icons.scss',
       steps: [String, parseGlyphs, stringify]
     },
     {
-      file: 'fonts/Ionicons.ttf',
-      source: 'fonts/ionicons.ttf',
+      file: FILES.FONT_FILE,
+      from: 'fonts/ionicons.ttf',
       steps: []
     }
-  ].map(({ file, source, steps }) =>
+  ].map(({ file, from, steps }) =>
     [resolvePath, fs.readFileSync, ...steps]
-      .reduce((prev, next) => prev.then(next), Promise.resolve(source))
-      .then(data => fs.writeFileSync(path.resolve(__dirname, file), data))
+      .reduce((prev, next) => prev.then(next), Promise.resolve(from))
+      .then(it => fs.writeFileSync(path.resolve(__dirname, file), it))
+      .then(() => console.log(`  Generated ${file} ...`))
   )
 
-  Promise.all(recipes)
-    .then(() => debug('done!'))
-    .catch(e => debug(e.message))
-})()
+  Promise.all(workflows)
+    .then(() => console.log('All is done'))
+    .catch(e => console.log(e.message))
+}
+
+// only run as script
+if (require.main === module) {
+  generate()
+}
