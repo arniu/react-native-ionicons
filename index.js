@@ -53,7 +53,7 @@ class Icon extends React.PureComponent {
     return (
       <Text
         {...textProps}
-        style={[styles.default, fontStyle, style]}
+        style={[fontStyle, style, styles.icon]}
         ref={this._setRef}
       >
         {getGlyph(android, ios, name)}
@@ -71,7 +71,7 @@ Icon.defaultProps = {
 export default Icon
 
 const styles = StyleSheet.create({
-  default: {
+  icon: {
     fontFamily: 'Ionicons',
     fontWeight: 'normal',
     fontStyle: 'normal'

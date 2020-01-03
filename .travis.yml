@@ -1,0 +1,15 @@
+language: node_js
+
+os:
+  - linux
+  - windows
+
+node_js:
+  - 'node'
+  - '12'
+  - '10'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
