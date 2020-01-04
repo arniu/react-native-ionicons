@@ -5,8 +5,12 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "prepublishOnly": "node generate-icon",
-    "lint": "prettier --write '**/*.{js,ts,md}'; standard --fix"
+    "prepublishOnly": "test",
+    "generate": "node generate",
+    "standard": "standard --fix",
+    "prettier": "prettier --write '**/*.{js,json,ts,md}'",
+    "pretest": "npm run generate; npm run prettier; npm run standard",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -14,12 +18,11 @@
     }
   },
   "lint-staged": {
-    "*.{ts,md}": [
+    "*.{js,json,ts,md}": [
       "prettier --write",
       "git add"
     ],
     "*.js": [
-      "prettier --write",
       "standard --fix",
       "git add"
     ]
@@ -29,9 +32,9 @@
     "singleQuote": true
   },
   "standard": {
-    "ignore": [
-      "*.flow.js"
-    ]
+    "env": {
+      "jest": true
+    }
   },
   "repository": {
     "type": "git",
@@ -54,8 +57,12 @@
     "react-native": "*"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-jest": "^24.9.0",
     "husky": "^3.0.9",
     "ionicons": "^4.6.3",
+    "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "standard": "^14.3.1"
