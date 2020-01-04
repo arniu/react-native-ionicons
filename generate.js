@@ -7,7 +7,7 @@ const path = require('path')
  * @param {any} value
  * @return {string}
  */
-function stringify (value) {
+function stringify(value) {
   return JSON.stringify(value, null, 2)
 }
 
@@ -15,17 +15,17 @@ function stringify (value) {
  * @param {string} text
  * @return {Object.<string, number>}
  */
-function parseGlyphs (text) {
+function parseGlyphs(text) {
   const glyph = {}
   const regex = /ion-([^:]+):before.+content:\s*"\\(\w+)"/gm
-  for (let result; (result = regex.exec(text));) {
+  for (let result; (result = regex.exec(text)); ) {
     glyph[result[1]] = parseInt(result[2], 16)
   }
 
   return glyph
 }
 
-function resolvePath (file) {
+function resolvePath(file) {
   return `${__dirname}/node_modules/ionicons/dist/${file}`
 }
 
@@ -34,7 +34,7 @@ const FILES = (exports.FILES = {
   FONT_FILE: 'fonts/Ionicons.ttf'
 })
 
-function generate () {
+function generate() {
   const workflows = [
     {
       file: FILES.GLYPH_MAP,

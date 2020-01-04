@@ -9,7 +9,7 @@ export const UNKNOWN_ICON = ''
  * @param {function(string): string} mapper
  * @return {string}
  */
-export function tryGlyph (iconNames, mapper) {
+export function tryGlyph(iconNames, mapper) {
   const code = iconNames.reduce((prev, name) => {
     return prev || glyphs[name in glyphs ? name : mapper(name)]
   }, undefined)

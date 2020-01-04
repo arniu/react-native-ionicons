@@ -19,7 +19,7 @@ const getGlyph = Platform.select({
 })
 
 class Icon extends React.PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this._setRef = ref => {
@@ -27,13 +27,13 @@ class Icon extends React.PureComponent {
     }
   }
 
-  setNativeProps (props) {
+  setNativeProps(props) {
     if (this._text) {
       this._text.setNativeProps(props)
     }
   }
 
-  render () {
+  render() {
     const {
       name,
       android,
