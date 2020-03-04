@@ -1,6 +1,6 @@
-import glyphs from './map.json'
+import glyphs from "./map.json";
 
-export const UNKNOWN_ICON = ''
+export const UNKNOWN_ICON = "";
 
 /**
  * Try glyph
@@ -11,10 +11,10 @@ export const UNKNOWN_ICON = ''
  */
 export function tryGlyph(iconNames, mapper) {
   const code = iconNames.reduce((prev, name) => {
-    return prev || glyphs[name in glyphs ? name : mapper(name)]
-  }, undefined)
+    return prev || glyphs[name in glyphs ? name : mapper(name)];
+  }, undefined);
 
-  return code ? String.fromCharCode(code) : UNKNOWN_ICON
+  return code ? String.fromCharCode(code) : UNKNOWN_ICON;
 }
 
 /**

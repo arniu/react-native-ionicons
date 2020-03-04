@@ -1,15 +1,14 @@
 {
   "name": "react-native-ionicons",
-  "version": "4.6.4",
   "description": "Ionic icons for React Native",
+  "version": "4.6.4",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
     "prepublishOnly": "npm test",
-    "generate": "node generate",
+    "generate": "node generate.js",
     "prettier": "prettier --write '**/*.{js,json,ts,md}'",
-    "pretest": "npm run generate; npm run prettier",
-    "test": "jest"
+    "test": "npm run generate && jest"
   },
   "husky": {
     "hooks": {
@@ -19,13 +18,8 @@
   },
   "lint-staged": {
     "*.{js,json,ts,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
   },
   "repository": {
     "type": "git",
@@ -48,14 +42,14 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-jest": "^24.9.0",
-    "husky": "^3.0.9",
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "babel-jest": "^25.1.0",
+    "husky": "^4.2.3",
     "ionicons": "^4.6.3",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1"
   },
   "rnpm": {
     "assets": [

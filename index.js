@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { StyleSheet, Text, Platform } from 'react-native'
-import { tryGlyph } from './glyph'
+import * as React from "react";
+import { StyleSheet, Text, Platform } from "react-native";
+import { tryGlyph } from "./glyph";
 
 /**
  * @typedef {(string|undefined)} IconName
@@ -16,20 +16,20 @@ import { tryGlyph } from './glyph'
 const getGlyph = Platform.select({
   ios: (_android, ios, name) => tryGlyph([ios, name], x => `ios-${x}`),
   default: (android, _ios, name) => tryGlyph([android, name], x => `md-${x}`)
-})
+});
 
 class Icon extends React.PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
     this._setRef = ref => {
-      this._text = ref
-    }
+      this._text = ref;
+    };
   }
 
   setNativeProps(props) {
     if (this._text) {
-      this._text.setNativeProps(props)
+      this._text.setNativeProps(props);
     }
   }
 
@@ -43,12 +43,12 @@ class Icon extends React.PureComponent {
       style,
       children,
       ...textProps
-    } = this.props
+    } = this.props;
 
     const fontStyle = {
       fontSize: size,
       color
-    }
+    };
 
     return (
       <Text
@@ -59,21 +59,21 @@ class Icon extends React.PureComponent {
         {getGlyph(android, ios, name)}
         {children}
       </Text>
-    )
+    );
   }
 }
 
 Icon.defaultProps = {
   allowFontScaling: false,
   size: 30
-}
+};
 
-export default Icon
+export default Icon;
 
 const styles = StyleSheet.create({
   icon: {
-    fontFamily: 'Ionicons',
-    fontWeight: 'normal',
-    fontStyle: 'normal'
+    fontFamily: "Ionicons",
+    fontWeight: "normal",
+    fontStyle: "normal"
   }
-})
+});
