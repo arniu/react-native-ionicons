@@ -1,6 +1,4 @@
-import glyphs from "./map.json";
-
-export const UNKNOWN_ICON = "";
+import map from "./fonts/Ionicons.json";
 
 /**
  * Try glyph
@@ -11,12 +9,10 @@ export const UNKNOWN_ICON = "";
  */
 export function tryGlyph(iconNames, mapper) {
   const code = iconNames.reduce((prev, name) => {
-    return prev || glyphs[name in glyphs ? name : mapper(name)];
+    return prev || map[name in map ? name : mapper(name)];
   }, undefined);
 
   return code ? String.fromCharCode(code) : UNKNOWN_ICON;
 }
 
-/**
- * @typedef
- */
+export const UNKNOWN_ICON = "";

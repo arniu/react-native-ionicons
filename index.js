@@ -3,14 +3,10 @@ import { StyleSheet, Text, Platform } from "react-native";
 import { tryGlyph } from "./glyph";
 
 /**
- * @typedef {(string|undefined)} IconName
- */
-
-/**
  * @function
- * @param {IconName} android
- * @param {IconName} ios
- * @param {IconName} name
+ * @param {string} android
+ * @param {string} ios
+ * @param {string} name
  * @return {string}
  */
 const getGlyph = Platform.select({

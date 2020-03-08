@@ -8,7 +8,7 @@
     "prepublishOnly": "npm test",
     "generate": "node script/generate.js",
     "prettier": "prettier --write '**/*.{js,json,ts,md}'",
-    "test": "npm run generate && jest"
+    "test": "npm run generate && npm run prettier && jest"
   },
   "husky": {
     "hooks": {
@@ -46,7 +46,7 @@
     "@babel/preset-env": "^7.8.6",
     "babel-jest": "^25.1.0",
     "decamelize": "^4.0.0",
-    "graceful-fs": "^4.2.3",
+    "fs-extra": "^8.1.0",
     "husky": "^4.2.3",
     "ionicons": "^5.0.1",
     "jest": "^25.1.0",

@@ -1,12 +1,14 @@
 #! /usr/bin/env node
 
-function main() {
+async function main() {
   const list = prepareData();
   const path = preparePath();
 
-  createJson(list, path.json);
-  createType(list, path.type);
-  createFont(list, path.font);
+  await Promise.all([
+    createJson(list, path.json),
+    createType(list, path.type),
+    createFont(list, path.font)
+  ]);
 }
 
 function preparePath() {
@@ -15,7 +17,7 @@ function preparePath() {
   const root = path.resolve(__dirname, "..");
 
   return {
-    json: path.resolve(root, `glyph/map.json`),
+    json: path.resolve(root, `fonts/${manifest.name}.json`),
     font: path.resolve(root, `fonts/${manifest.name}.ttf`),
     type: path.resolve(root, `index.d.ts`)
   };
@@ -58,14 +60,14 @@ function prepareData() {
  * @param {IconData[]} list
  * @param {string} path
  */
-function createJson(list, path) {
-  const fs = require("graceful-fs");
+async function createJson(list, path) {
+  const fs = require("fs-extra");
   const json = list.reduce((map, it) => {
     map[it.name] = it.code;
     return map;
   }, {});
 
-  fs.writeFileSync(path, JSON.stringify(json, null, 2));
+  await fs.outputJSON(path, json, { spaces: 2 });
 }
 
 /**
@@ -74,13 +76,13 @@ function createJson(list, path) {
  * @param {IconData[]} list
  * @param {string} path
  */
-function createFont(list, path) {
-  const fs = require("graceful-fs");
+async function createFont(list, path) {
+  const fs = require("fs-extra");
   const svg2ttf = require("svg2ttf");
   const prepareSVG = require("./prepareSVG");
-  const buf = svg2ttf(prepareSVG(list));
+  const ttf = svg2ttf(prepareSVG(list));
 
-  fs.writeFileSync(path, buf.buffer);
+  await fs.outputFile(path, ttf.buffer);
 }
 
 /**
@@ -89,12 +91,12 @@ function createFont(list, path) {
  * @param {IconData[]} list
  * @param {string} path
  */
-function createType(list, path) {
-  const fs = require("graceful-fs");
+async function createType(list, path) {
+  const fs = require("fs-extra");
   const prepareType = require("./prepareType");
   const content = prepareType(list);
 
-  fs.writeFileSync(path, content);
+  await fs.outputFile(path, content);
 }
 
 if (require.main === module) {
