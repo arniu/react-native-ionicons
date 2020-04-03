@@ -7,7 +7,7 @@ async function main() {
   await Promise.all([
     createJson(list, path.json),
     createType(list, path.type),
-    createFont(list, path.font)
+    createFont(list, path.font),
   ]);
 }
 
@@ -19,7 +19,7 @@ function preparePath() {
   return {
     json: path.resolve(root, `fonts/${manifest.name}.json`),
     font: path.resolve(root, `fonts/${manifest.name}.ttf`),
-    type: path.resolve(root, `index.d.ts`)
+    type: path.resolve(root, `index.d.ts`),
   };
 }
 
@@ -45,7 +45,7 @@ function prepareData() {
       list.push({
         icon: icons[name],
         name: decamelize(name, "-"),
-        code: code++
+        code: code++,
       });
     }
   }

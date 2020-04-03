@@ -15,15 +15,15 @@ module.exports = function prepareSVG(list) {
   return new Promise((resolve, reject) => {
     const chunks = [];
     const stream = new FontStream({
-      fontName: manifest.name
+      fontName: manifest.name,
     });
 
     stream
-      .on("error", err => reject(err))
+      .on("error", (err) => reject(err))
       .on("finish", () => resolve(Buffer.concat(chunks).toString()))
-      .on("data", chunk => chunks.push(chunk));
+      .on("data", (chunk) => chunks.push(chunk));
 
-    list.forEach(it => {
+    list.forEach((it) => {
       const pair = it.icon.split(",");
       if (pair.length !== 2) {
         throw new Error(`Invalid icon ${it.name}`);
@@ -32,7 +32,7 @@ module.exports = function prepareSVG(list) {
       const readable = Readable.from(pair[1]);
       readable.metadata = {
         unicode: [String.fromCodePoint(it.code)],
-        name: it.name
+        name: it.name,
       };
 
       stream.write(readable);
