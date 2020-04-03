@@ -25,15 +25,14 @@ function preparePath() {
 
 /**
  * @typedef IconData
+ * @property {string} icon
  * @property {string} name
- * @property {string} path
  * @property {number} code
  *
  *
  * @returns {IconData[]}
  */
 function prepareData() {
-  const extract = require("./extract");
   const manifest = require("./manifest");
   const decamelize = require("decamelize");
   const icons = require("ionicons/icons");
@@ -44,8 +43,8 @@ function prepareData() {
   for (const name in icons) {
     if (regex.test(name)) {
       list.push({
+        icon: icons[name],
         name: decamelize(name, "-"),
-        path: extract(icons[name]),
         code: code++
       });
     }
@@ -80,7 +79,8 @@ async function createFont(list, path) {
   const fs = require("fs-extra");
   const svg2ttf = require("svg2ttf");
   const prepareSVG = require("./prepareSVG");
-  const ttf = svg2ttf(prepareSVG(list));
+  const svg = await prepareSVG(list);
+  const ttf = svg2ttf(svg);
 
   await fs.outputFile(path, ttf.buffer);
 }

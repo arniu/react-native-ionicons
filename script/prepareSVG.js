@@ -1,39 +1,43 @@
-const makeFont = glyphs => `<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-<defs>
-<font id="Ionicons" horiz-adv-x="416" >
-  <font-face
-    font-family="Ionicons"
-    font-stretch="normal"
-    font-weight="400"
-    units-per-em="512"
-    descent="-64"
-    ascent="448"
-  />
-  <missing-glyph />
-  <!-- Glyphs here -->
-  ${glyphs.join("\n  ")}
-</font>
-</defs>
-</svg>
-`;
-
-const makeGlyph = ({ name, code, path }) => `<glyph
-  glyph-name="${name}"
-  unicode="&#${code.toString(16)};"
-  d="${path}"
-/>`;
+const { Readable } = require("stream");
+const FontStream = require("svgicons2svgfont");
+const manifest = require("./manifest");
 
 /**
  * @typedef IconData
+ * @property {string} icon
  * @property {string} name
- * @property {string} path
  * @property {number} code
  *
  * @param {IconData[]} list
  * @returns {string}
  */
 module.exports = function prepareSVG(list) {
-  return makeFont(list.map(makeGlyph));
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    const stream = new FontStream({
+      fontName: manifest.name
+    });
+
+    stream
+      .on("error", err => reject(err))
+      .on("finish", () => resolve(Buffer.concat(chunks).toString()))
+      .on("data", chunk => chunks.push(chunk));
+
+    list.forEach(it => {
+      const pair = it.icon.split(",");
+      if (pair.length !== 2) {
+        throw new Error(`Invalid icon ${it.name}`);
+      }
+
+      const readable = Readable.from(pair[1]);
+      readable.metadata = {
+        unicode: [String.fromCodePoint(it.code)],
+        name: it.name
+      };
+
+      stream.write(readable);
+    });
+
+    stream.end();
+  });
 };
