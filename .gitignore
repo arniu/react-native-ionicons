@@ -129,6 +129,8 @@ typings/
 .next
 
 ### Customize
+fonts/
+
 package-lock.json
 yarn.lock
 
