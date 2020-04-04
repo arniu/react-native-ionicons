@@ -1,0 +1,16 @@
+version: 1
+update_configs:
+  - package_manager: "javascript"
+    update_schedule: "daily"
+    directory: "/"
+    ignored_updates:
+      - match:
+          dependency_name: "@babel/*"
+      - match:
+          dependency_name: "babel-jest"
+      - match:
+          dependency_name: "jest"
+      - match:
+          dependency_name: "lint-staged"
+      - match:
+          dependency_name: "husky"
