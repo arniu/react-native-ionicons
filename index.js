@@ -14,15 +14,15 @@ import { tryGlyph } from './glyph'
  * @return {string}
  */
 const getGlyph = Platform.select({
-  ios: (_android, ios, name) => tryGlyph([ios, name], x => `ios-${x}`),
-  default: (android, _ios, name) => tryGlyph([android, name], x => `md-${x}`)
+  ios: (_android, ios, name) => tryGlyph([ios, name], (x) => `ios-${x}`),
+  default: (android, _ios, name) => tryGlyph([android, name], (x) => `md-${x}`),
 })
 
 class Icon extends React.PureComponent {
   constructor(props) {
     super(props)
 
-    this._setRef = ref => {
+    this._setRef = (ref) => {
       this._text = ref
     }
   }
@@ -47,7 +47,7 @@ class Icon extends React.PureComponent {
 
     const fontStyle = {
       fontSize: size,
-      color
+      color,
     }
 
     return (
@@ -65,7 +65,7 @@ class Icon extends React.PureComponent {
 
 Icon.defaultProps = {
   allowFontScaling: false,
-  size: 30
+  size: 30,
 }
 
 export default Icon
@@ -74,6 +74,6 @@ const styles = StyleSheet.create({
   icon: {
     fontFamily: 'Ionicons',
     fontWeight: 'normal',
-    fontStyle: 'normal'
-  }
+    fontStyle: 'normal',
+  },
 })

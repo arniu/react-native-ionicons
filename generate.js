@@ -31,7 +31,7 @@ function resolvePath(file) {
 
 const FILES = (exports.FILES = {
   GLYPH_MAP: 'glyph/map.json',
-  FONT_FILE: 'fonts/Ionicons.ttf'
+  FONT_FILE: 'fonts/Ionicons.ttf',
 })
 
 function generate() {
@@ -39,23 +39,23 @@ function generate() {
     {
       file: FILES.GLYPH_MAP,
       from: 'scss/ionicons-icons.scss',
-      steps: [String, parseGlyphs, stringify]
+      steps: [String, parseGlyphs, stringify],
     },
     {
       file: FILES.FONT_FILE,
       from: 'fonts/ionicons.ttf',
-      steps: []
-    }
+      steps: [],
+    },
   ].map(({ file, from, steps }) =>
     [resolvePath, fs.readFileSync, ...steps]
       .reduce((prev, next) => prev.then(next), Promise.resolve(from))
-      .then(it => fs.writeFileSync(path.resolve(__dirname, file), it))
+      .then((it) => fs.writeFileSync(path.resolve(__dirname, file), it))
       .then(() => console.log(`  Generated ${file} ...`))
   )
 
   Promise.all(workflows)
     .then(() => console.log('All is done'))
-    .catch(e => console.log(e.message))
+    .catch((e) => console.log(e.message))
 }
 
 // only run as script

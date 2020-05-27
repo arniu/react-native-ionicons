@@ -10,7 +10,7 @@ declare module 'react-native-ionicons' {
     android?: string,
     ios?: string,
     color?: string,
-    size?: number
+    size?: number,
   }
 
   declare type Icon = React.ComponentType<IconProps>

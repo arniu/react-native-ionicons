@@ -7,7 +7,7 @@
   "scripts": {
     "prepublishOnly": "npm test",
     "generate": "node generate",
-    "prettier": "prettier --write '**/*.{js,json,ts,md}'",
+    "prettier": "prettier --write '**/*.{js,json,flow,ts,md}'",
     "pretest": "npm run generate; npm run prettier",
     "test": "jest"
   },
@@ -18,9 +18,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,ts,md}": [
-      "prettier --write",
-      "git add"
+    "*.{js,json,flow,ts,md}": [
+      "prettier --write"
     ]
   },
   "prettier": {
@@ -48,14 +47,14 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-jest": "^24.9.0",
-    "husky": "^3.0.9",
+    "@babel/core": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
+    "babel-jest": "^26.0.1",
+    "husky": "^4.2.5",
     "ionicons": "^4.6.3",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.6",
+    "prettier": "^2.0.5"
   },
   "rnpm": {
     "assets": [
