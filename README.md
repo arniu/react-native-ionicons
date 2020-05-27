@@ -4,14 +4,20 @@
 [![Build Status](https://travis-ci.com/arniu/react-native-ionicons.svg?branch=master)](https://travis-ci.com/arniu/react-native-ionicons)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
-Bring [Ionicons - Beautifully crafted open source icons](https://ionicons.com/) to your awesome react-native apps.
+Bring [Ionicons - Beautifully crafted open source icons](https://ionicons.com/v4/) to your awesome react-native apps.
 
 ## Usage
 
 - Install
 
 ```bash
-npm install react-native-ionicons
+npm install react-native-ionicons@^4.x
+```
+
+Or:
+
+```bash
+yarn add react-native-ionicons@^4.x
 ```
 
 - Link with `react-native` (**Optional**)
@@ -60,7 +66,7 @@ const IconBar = () => (
 > `IconName` can be of short name or qualified name, which is the short one
 > preffixed with `md-` or `ios-`.
 >
-> The short `IconName` can be found [here](https://ionicons.com/cheatsheet.html).
+> The short `IconName` can be found [here](https://ionicons.com/v4/cheatsheet.html).
 
 ## Versioning
 
