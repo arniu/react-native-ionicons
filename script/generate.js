@@ -7,7 +7,7 @@ async function main() {
   await Promise.all([
     createJson(list, path.json),
     createType(list, path.type),
-    createFont(list, path.font),
+    // createFont(list, path.font),
   ]);
 }
 

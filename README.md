@@ -32,7 +32,7 @@ const IconBar = () => (
   <View>
     <Icon name="add" />
     <!-- This is same to the following: -->
-    <Icon ios="ios-add" android="md-add" />
+    <Icon ios="add-outline" android="add" />
   </View>
 )
 ```
@@ -57,10 +57,9 @@ const IconBar = () => (
 |   color | `?string`  | -       | Icon color                      |
 |    size | `?number`  | 30      | Icon size, namely `fontSize`    |
 
-> `IconName` can be of short name or qualified name, which is the short one
-> preffixed with `md-` or `ios-`.
+> `IconName` can be of short name or qualified name
 >
-> The short `IconName` can be found [here](https://ionicons.com/cheatsheet.html).
+> The short `IconName` can be found [here](https://ionicons.com).
 
 ## Versioning
 

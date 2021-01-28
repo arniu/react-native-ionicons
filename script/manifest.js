@@ -10,5 +10,5 @@ module.exports = {
    *
    * [manifest]: https://github.com/ionic-team/ionicons/blob/4.x/scripts/manifest.json
    */
-  startAt: 0xf100,
+  startAt: 0xe900,
 };
